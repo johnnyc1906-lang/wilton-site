@@ -1,0 +1,180 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilton Handyman Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #007BFF;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 4px 0;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .contact a {
+            color: #007BFF;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                background: white;
+            }
+            nav.active ul {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul id="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#hours">Hours</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Wilton Handyman Services</h1>
+    <p>Quality repairs and upgrades for your home.</p>
+</section>
+
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p>At Wilton, we pride ourselves on offering top-notch handyman services tailored to your needs. With a 4.6/5 rating from our satisfied customers, we have the experience and dedication to get the job done right.</p>
+</section>
+
+<section id="services" class="section">
+    <h2>Our Services</h2>
+    <p>From small repairs to larger renovation projects, we offer a comprehensive range of handyman services including:</p>
+    <ul>
+        <li>Home Repairs</li>
+        <li>Painting & Decorating</li>
+        <li>Plumbing</li>
+        <li>Electrical Work</li>
+        <li>Furniture Assembly</li>
+    </ul>
+</section>
+
+<section id="hours" class="section">
+    <h2>Business Hours</h2>
+    <p>Monday - Friday: 8 AM - 6 PM</p>
+    <p>Saturday: 9 AM - 5 PM</p>
+    <p>Sunday: Closed</p>
+</section>
+
+<section id="contact" class="section contact">
+    <h2>Contact Us</h2>
+    <p>Address: 12 Old Hwy, Wilton, CT 06897, USA</p>
+    <p>Phone: <a href="tel:+12034480135">Call Now</a></p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank">Get Directions</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2023 Wilton Handyman Services | All Rights Reserved</p>
+    <p>Rating: 4.6/5 (8 reviews)</p>
+</footer>
+
+<script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
+
+<script>
+(function(){document.addEventListener('click',function(e){
+  var el=e.target.closest('a'); if(!el)return;
+  var href=el.getAttribute('href');
+  if(href&&href.startsWith('#')&&href.length>1){
+    e.preventDefault();
+    var t=document.getElementById(href.slice(1));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  }
+},true);})();
+</script>
+</body>
+</html>
+```
