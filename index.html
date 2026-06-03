@@ -1,169 +1,1429 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wilton Handyman Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-        }
-        header {
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #007BFF;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            margin: 4px 0;
-        }
-        .hero {
-            height: 100vh;
-            background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 48px;
-            margin: 0;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .contact a {
-            color: #007BFF;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                display: none;
-                width: 100%;
-                background: white;
-            }
-            nav.active ul {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilton Handyman Services | Wilton, CT</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #1a3a5c;
+    --accent: #e8a020;
+    --accent-dark: #c8861a;
+    --light: #f5f7fa;
+    --dark: #0e1f30;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(0,0,0,0.12);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== STICKY HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(14, 31, 48, 0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .logo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .logo-sub {
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 2.5px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(10, 24, 38, 0.99);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.3s;
+  }
+
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+
+  #hero:hover .hero-bg { transform: scale(1); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,160,32,0.2);
+    border: 1px solid rgba(232,160,32,0.6);
+    color: var(--accent);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: none;
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-title span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(232,160,32,0.4);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(232,160,32,0.5);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.7);
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--accent);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    z-index: 2;
+  }
+
+  .scroll-arrow {
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid rgba(255,255,255,0.6);
+    border-bottom: 2px solid rgba(255,255,255,0.6);
+    transform: rotate(45deg);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== SECTION STYLES ===== */
+  section { padding: 5rem 2rem; }
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-title span { color: var(--primary); }
+
+  .section-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--light); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background: var(--white);
+    padding: 1.2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+    transition: transform 0.3s;
+  }
+
+  .feature-card:hover { transform: translateY(-3px); }
+
+  .feature-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .feature-text {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    background: #e8edf2;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--accent);
+    color: var(--dark);
+    padding: 1.5rem;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(232,160,32,0.4);
+  }
+
+  .about-badge-num {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .about-badge-text {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    margin-top: 4px;
+  }
+
+  /* ===== SERVICES ===== */
+  #services { background: var(--white); }
+
+  .services-intro {
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .services-intro p {
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    border-color: rgba(232,160,32,0.2);
+    background: var(--white);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), #2a5080);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 6px 16px rgba(26,58,92,0.2);
+  }
+
+  .service-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--white);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+
+  /* ===== GALLERY ===== */
+  #gallery { background: var(--light); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #dde3ea;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s, box-shadow 0.35s;
+    cursor: pointer;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .gallery-item.featured {
+    grid-column: span 2;
+  }
+
+  /* ===== HOURS ===== */
+  #hours { background: var(--primary); position: relative; overflow: hidden; }
+
+  #hours::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba(232,160,32,0.06);
+    border-radius: 50%;
+  }
+
+  #hours::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  #hours .section-title { color: var(--white); }
+  #hours .section-tag { color: rgba(232,160,32,0.9); }
+  #hours .section-line { background: linear-gradient(90deg, var(--accent), transparent); }
+
+  .hours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hours-table {
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.2s;
+  }
+
+  .hours-row:hover { background: rgba(255,255,255,0.05); }
+  .hours-row:last-child { border-bottom: none; }
+
+  .hours-day {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .hours-time {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .hours-time.closed { color: rgba(255,255,255,0.35); }
+  .hours-time.open { color: var(--accent); }
+
+  .hours-cta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .hours-cta-box p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .hours-cta-box .btn-primary {
+    align-self: flex-start;
+  }
+
+  .rating-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.07);
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .star {
+    width: 18px;
+    height: 18px;
+    fill: var(--accent);
+    color: var(--accent);
+  }
+
+  .rating-info strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .rating-info span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.4rem;
+    background: var(--light);
+    border-radius: var(--radius);
+    border: 1px solid rgba(26,58,92,0.08);
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateX(4px);
+    border-color: var(--accent);
+  }
+
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), #2a5080);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--white);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .contact-card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-card-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .contact-form-side h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #dce3ec;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26,58,92,0.1);
+  }
+
+  .form-group textarea {
+    height: 130px;
+    resize: vertical;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), #2a5080);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+
+  .form-submit:hover {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,160,32,0.35);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    padding: 3.5rem 2rem 1.5rem;
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand .logo-name { color: var(--white); font-size: 1.5rem; }
+
+  .footer-brand p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.3s;
+  }
+
+  .footer-col ul li a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-bottom a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+
+    section { padding: 3.5rem 1.2rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-visual { display: none; }
+    .about-features { grid-template-columns: 1fr; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.featured { grid-column: span 1; }
+
+    .hours-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .footer-bottom { flex-direction: column; text-align: center; }
+
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .about-badge { right: 0; bottom: -10px; width: 90px; height: 90px; }
+  }
+</style>
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
-    <nav>
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul id="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#hours">Hours</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <a href="#hero" class="logo">
+      <span class="logo-name">Wilton</span>
+      <span class="logo-sub">Handyman Services</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+12034480135" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#gallery" onclick="closeMobile()">Gallery</a>
+    <a href="#hours" onclick="closeMobile()">Hours</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="tel:+12034480135" style="color: var(--accent);">Call (203) 448-0135</a>
+  </div>
 </header>
 
-<section class="hero" id="home">
-    <h1>Wilton Handyman Services</h1>
-    <p>Quality repairs and upgrades for your home.</p>
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Trusted Local Handyman
+    </div>
+    <h1 class="hero-title">Your Home,<br><span>Perfectly Fixed</span></h1>
+    <p class="hero-sub">Professional handyman services in Wilton, CT. No job too small — we handle repairs, maintenance, and improvements with care and expertise.</p>
+    <div class="hero-actions">
+      <a href="tel:+12034480135" class="btn-primary">Call (203) 448-0135</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4.6★</div>
+        <div class="stat-label">Star Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Happy Reviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Local</div>
+        <div class="stat-label">Wilton Based</div>
+      </div>
+    </div>
+  </div>
+  <a href="#about" class="hero-scroll">
+    <div class="scroll-arrow"></div>
+  </a>
 </section>
 
-<section id="about" class="section">
-    <h2>About Us</h2>
-    <p>At Wilton, we pride ourselves on offering top-notch handyman services tailored to your needs. With a 4.6/5 rating from our satisfied customers, we have the experience and dedication to get the job done right.</p>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="section-container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-tag">Who We Are</span>
+        <h2 class="section-title">Wilton's Trusted<br><span>Handyman Team</span></h2>
+        <div class="section-line"></div>
+        <p>Based right in the heart of Wilton, Connecticut, we bring professional craftsmanship and genuine neighborly care to every project. From quick fixes to complex home improvements, we treat every home like our own.</p>
+        <p>Our team brings years of hands-on experience to each job site. We arrive on time, communicate clearly, and don't leave until the work is done right. It's that simple — and that's why our neighbors keep calling us back.</p>
+        <div class="about-features">
+          <div class="feature-card">
+            <div class="feature-title">Licensed & Insured</div>
+            <div class="feature-text">Fully covered for your peace of mind on every project.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">Local Experts</div>
+            <div class="feature-text">Proudly serving Wilton and surrounding CT communities.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">Fair Pricing</div>
+            <div class="feature-text">Transparent quotes with no hidden fees or surprises.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-title">Quality Work</div>
+            <div class="feature-text">We stand behind everything we do — guaranteed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-img-wrap">
+          <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Wilton Handyman Services" loading="lazy">
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">4.6</div>
+          <div class="about-badge-text">Star Rated Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="services" class="section">
-    <h2>Our Services</h2>
-    <p>From small repairs to larger renovation projects, we offer a comprehensive range of handyman services including:</p>
-    <ul>
-        <li>Home Repairs</li>
-        <li>Painting & Decorating</li>
-        <li>Plumbing</li>
-        <li>Electrical Work</li>
-        <li>Furniture Assembly</li>
-    </ul>
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="section-container">
+    <div class="services-intro">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <div class="section-line"></div>
+      <p>From minor repairs to significant home improvements, our comprehensive handyman services cover everything your home needs — done right, the first time.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <div class="service-name">General Repairs</div>
+        <div class="service-desc">Doors, windows, walls, floors — we fix what's broken and restore what's worn so your home looks and functions at its best.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-name">Plumbing Fixes</div>
+        <div class="service-desc">Leaky faucets, running toilets, fixture replacements, and minor plumbing repairs handled quickly and professionally.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="service-name">Electrical Work</div>
+        <div class="service-desc">Outlet and switch replacements, ceiling fan installation, lighting upgrades, and other safe, code-compliant electrical services.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="service-name">Carpentry</div>
+        <div class="service-desc">Custom shelving, trim work, door installation, cabinet repairs, and all manner of woodworking and finish carpentry.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+        </div>
+        <div class="service-name">Painting & Touch-Ups</div>
+        <div class="service-desc">Interior and exterior painting, wall patching, drywall repair, caulking, and surface preparation for a fresh, clean finish.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <div class="service-name">Home Maintenance</div>
+        <div class="service-desc">Seasonal maintenance, weatherproofing, gutter cleaning, caulking, and preventative care to protect your home year-round.</div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<section id="hours" class="section">
-    <h2>Business Hours</h2>
-    <p>Monday - Friday: 8 AM - 6 PM</p>
-    <p>Saturday: 9 AM - 5 PM</p>
-    <p>Sunday: Closed</p>
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="section-container">
+    <span class="section-tag">Our Work</span>
+    <h2 class="section-title">Work <span>Gallery</span></h2>
+    <div class="section-line"></div>
+    <p style="color: var(--text-light); max-width: 540px; line-height: 1.7; margin-bottom: 0.5rem;">Take a look at our craftsmanship. Every project — big or small — receives the same level of attention and care.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item featured">
+        <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Wilton Handyman Work" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Professional Handyman Services" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Home Repair Wilton CT" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Handyman Project" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://base44.app/api/apps/6a1798b3a88e036d195b8c12/files/mp/public/6a1798b3a88e036d195b8c12/9d8acb9e6_biz-photo-1.jpg" alt="Quality Repairs" loading="lazy">
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="section contact">
-    <h2>Contact Us</h2>
-    <p>Address: 12 Old Hwy, Wilton, CT 06897, USA</p>
-    <p>Phone: <a href="tel:+12034480135">Call Now</a></p>
-    <p><a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank">Get Directions</a></p>
+<!-- ===== HOURS ===== -->
+<section id="hours">
+  <div class="section-container">
+    <span class="section-tag">We're Available</span>
+    <h2 class="section-title">Business Hours</h2>
+    <div class="section-line"></div>
+    <div class="hours-grid">
+      <div>
+        <div class="hours-table">
+          <div class="hours-row">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time open">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time open">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time open">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time open">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time open">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time open">8:00 AM – 4:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time closed">Closed</span>
+          </div>
+        </div>
+      </div>
+      <div class="hours-cta-box">
+        <div class="rating-display">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" style="opacity:0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="rating-info">
+            <strong>4.6 / 5</strong>
+            <span>8 Customer Reviews</span>
+          </div>
+        </div>
+        <p>Ready to get that project off your list? Call us during business hours for a fast, friendly quote — or leave a message and we'll get back to you promptly.</p>
+        <a href="tel:+12034480135" class="btn-primary">Call (203) 448-0135</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank" class="btn-outline" style="align-self: flex-start;">Get Directions</a>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-container">
+    <div class="contact-grid">
+      <div>
+        <span class="section-tag">Reach Out</span>
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="section-line"></div>
+        <p style="color: var(--text-light); line-height: 1.7; max-width: 420px;">Whether you have a small repair or a larger project in mind, we'd love to hear from you. Contact us today for a free estimate.</p>
+        <div class="contact-cards">
+          <a href="tel:+12034480135" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.5 10.81 19.79 19.79 0 01.46 2.18 2 2 0 012.44 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">Phone</div>
+              <div class="contact-card-value">(203) 448-0135</div>
+            </div>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">Address</div>
+              <div class="contact-card-value">12 Old Hwy, Wilton, CT 06897</div>
+            </div>
+          </a>
+          <div class="contact-card" style="cursor: default;">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-title">Hours Today</div>
+              <div class="contact-card-value">Mon–Fri: 7:00 AM – 6:00 PM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-side">
+        <h3>Send Us a Message</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(203) 555-0000">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <input type="text" id="service" name="service" placeholder="e.g. Plumbing, Carpentry, Painting...">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Describe your project or issue..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer>
-    <p>&copy; 2023 Wilton Handyman Services | All Rights Reserved</p>
-    <p>Rating: 4.6/5 (8 reviews)</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-name">Wilton</div>
+      <div class="logo-sub" style="display:inline-block; margin-top:4px;">Handyman Services</div>
+      <p>Professional, reliable handyman services in Wilton, CT. We take pride in our work and our community — treating every home with the care it deserves.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#hours">Business Hours</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+12034480135">(203) 448-0135</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank">12 Old Hwy</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank">Wilton, CT 06897</a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Wilton%2012%20Old%20Hwy%2C%20Wilton%2C%20CT%2006897%2C%20USA" target="_blank">Get Directions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Wilton Handyman Services. All rights reserved. | <a href="tel:+12034480135">Call (203) 448-0135</a></p>
+    <p style="font-size: 0.78rem; color: rgba(255,255,255,0.3);">Serving Wilton, CT and surrounding communities</p>
+  </div>
 </footer>
 
 <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
-        document.querySelector('nav').classList.toggle('active');
-    });
-</script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
 
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobile() {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Form submission handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+
+  // Header scroll effect
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 60) {
+      header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+    } else {
+      header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+    }
+  });
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMobile();
+    }
+  });
+</script>
 <script>
 (function(){document.addEventListener('click',function(e){
   var el=e.target.closest('a'); if(!el)return;
@@ -177,4 +1437,3 @@
 </script>
 </body>
 </html>
-```
